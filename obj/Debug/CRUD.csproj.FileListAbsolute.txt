@@ -1,0 +1,11 @@
+D:\Abdul\C#\CRUD\obj\Debug\CRUD.csproj.AssemblyReference.cache
+D:\Abdul\C#\CRUD\obj\Debug\CRUD.csproj.SuggestedBindingRedirects.cache
+D:\Abdul\C#\CRUD\obj\Debug\CRUD.Properties.Resources.resources
+D:\Abdul\C#\CRUD\obj\Debug\CRUD.csproj.GenerateResource.cache
+D:\Abdul\C#\CRUD\obj\Debug\CRUD.csproj.CoreCompileInputs.cache
+D:\Abdul\C#\CRUD\bin\Debug\CRUD.exe.config
+D:\Abdul\C#\CRUD\bin\Debug\CRUD.exe
+D:\Abdul\C#\CRUD\bin\Debug\CRUD.pdb
+D:\Abdul\C#\CRUD\obj\Debug\CRUD.MainForm.resources
+D:\Abdul\C#\CRUD\obj\Debug\CRUD.exe
+D:\Abdul\C#\CRUD\obj\Debug\CRUD.pdb
