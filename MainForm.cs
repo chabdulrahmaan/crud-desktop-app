@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
@@ -8,7 +8,7 @@ namespace CRUD
     public partial class MainForm : Form
     {
         private SqlConnection con = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=CRUD;Integrated Security=True");
-        
+
         public MainForm()
         {
             InitializeComponent();
@@ -17,7 +17,7 @@ namespace CRUD
         //@@@@ load event for MainForm @@@//
         private void MainForm_Load(object sender, EventArgs e)
         {
-            ShowAllButton_Click(null, null);
+            ShowAllButton_Click();
         }
 
         //@@@@ click event for InsertButton @@@//
@@ -35,7 +35,7 @@ namespace CRUD
             cmd.ExecuteNonQuery();
             con.Close();
             MessageBox.Show("Record added successfully.");
-            ShowAllButton_Click(null, null);
+            ShowAllButton_Click();
         }
 
 
@@ -55,7 +55,7 @@ namespace CRUD
             cmd.ExecuteNonQuery();
             con.Close();
             MessageBox.Show("Record updated successfully.");
-            ShowAllButton_Click(null, null);
+            ShowAllButton_Click();
         }
 
         //@@@@ click event for DeleteButton @@@//
@@ -67,23 +67,23 @@ namespace CRUD
             cmd.ExecuteNonQuery();
             con.Close();
             MessageBox.Show("Record deleted successfully.");
-            ShowAllButton_Click(null, null);
+            ShowAllButton_Click();
         }
 
         //@@@@ click event for ShowAllButton @@@//
-        private void ShowAllButton_Click(object sender, EventArgs e)
+        private void ShowAllButton_Click(object sender = null, EventArgs e = null)
         {
             var cmd = new SqlCommand("SELECT * FROM student", con);
             var sda = new SqlDataAdapter(cmd);
             var dt = new DataTable();
             sda.Fill(dt);
             dataGridView.DataSource = dt;
-            ResetButton_Click(null, null);
+            ResetButton_Click();
         }
 
 
         //@@@@ click event for ResetButton @@@//
-        private void ResetButton_Click(object sender, EventArgs e)
+        private void ResetButton_Click(object sender = null, EventArgs e = null)
         {
             idTextBox.Clear();
             nameTextBox.Clear();
@@ -99,17 +99,18 @@ namespace CRUD
         private void SearchButton_Click(object sender, EventArgs e)
         {
             /****** 1st method ******/
+            // uncomment this line if want to use
+            // best method to search in all columns
             var query = "SELECT * FROM student WHERE "
-                            + "id LIKE '%'+@SEARCH+'%' "
-                            + "OR name LIKE '%'+@SEARCH+'%' "
-                            + "OR gender LIKE '%'+@SEARCH+'%' "
-                            + "OR dob LIKE '%'+@SEARCH+'%' "
-                            + "OR contact LIKE '%'+@SEARCH+'%' "
-                            + "OR address LIKE '%'+@SEARCH+'%' "
-                            + "OR city LIKE '%'+@SEARCH+'%'";
+                           + "id LIKE '%'+@SEARCH+'%' "
+                           + "OR name LIKE '%'+@SEARCH+'%' "
+                           + "OR gender LIKE '%'+@SEARCH+'%' "
+                           + "OR dob LIKE '%'+@SEARCH+'%' "
+                           + "OR contact LIKE '%'+@SEARCH+'%' "
+                           + "OR address LIKE '%'+@SEARCH+'%' "
+                           + "OR city LIKE '%'+@SEARCH+'%'";
 
             /****** 2nd method ******/
-            // uncomment this line if want to use
             //var query = "SELECT * FROM student WHERE CONVERT(VARCHAR, id) + name + CONVERT(VARCHAR, dob) + gender +  contact + address + city LIKE '%'+@SEARCH+'%'";
 
             /****** 3rd method ******/
@@ -132,7 +133,7 @@ namespace CRUD
             {
                 // current selected row
                 var row = dataGridView.Rows[e.RowIndex];
-                
+
                 // set data in form controls
                 idTextBox.Text = row.Cells["id"].Value.ToString();
                 nameTextBox.Text = row.Cells["name"].Value.ToString();
