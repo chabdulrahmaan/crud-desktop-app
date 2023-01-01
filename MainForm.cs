@@ -61,7 +61,7 @@ namespace CRUD
         //@@@@ click event for DeleteButton @@@//
         private void DeleteButton_Click(object sender, EventArgs e)
         {
-            var cmd = new SqlCommand("DELETE student WHERE id=@id", con);
+            var cmd = new SqlCommand("DELETE FROM student WHERE id=@id", con);
             cmd.Parameters.AddWithValue("@id", int.Parse(idTextBox.Text));
             con.Open();
             cmd.ExecuteNonQuery();
